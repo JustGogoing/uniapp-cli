@@ -1,9 +1,7 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+		<button type="default" @click="$Router.push({name: 'list'})">列表</button>
+		<button type="default" @click="$Router.push({name: 'mine'})">mine</button>
 	</view>
 </template>
 

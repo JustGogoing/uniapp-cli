@@ -1,6 +1,7 @@
 /**
  * 数据请求封装
  */
+import Router from '@/router' // 使用路由跳转页面
 import { debounce } from './utils.js';
 let loadingCount = 0;
 
