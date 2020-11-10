@@ -6,7 +6,7 @@
 				"navigationBarTitleText": "home"
 			}
 		},{
-			"path": "pages/home/list/list",
+			"path": "pages/home/list/index",
 			"style": {
 				"navigationBarTitleText": "homelist"
 			}

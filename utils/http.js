@@ -1,52 +1,51 @@
 /**
  * 数据请求封装
  */
+import _ from "@/plugins/lodash.js"
 import Router from '@/router' // 使用路由跳转页面
-import { debounce } from './utils.js';
 let loadingCount = 0;
 
 function showLoading() {
-  if(loadingCount===0) {
-    uni.showLoading({
-      mask: true,
-      title: '加载中'
-    })
-  }
-  loadingCount ++;
+    if(loadingCount===0) {
+        uni.showLoading({
+            mask: true,
+            title: '加载中'
+        })
+    }
+    loadingCount ++;
 }
 function hideLoading() {
-  if(loadingCount <= 1) {
-    debounce(() => {
-      uni.hideLoading();
-    }, 500)();
-  }
+    if(loadingCount <= 1) {
+        _.debounce(uni.hideLoading(), 500)
+    }
 }
 
 const http = {
-  get(url, data, showLoading, isDelay, header) {
-    return this.request(url, data, showLoading, isDelay, header = {}, 'GET')
+  get(params) {
+      return this.request(params, 'GET')
   },
-  post(url, data, showLoading, isDelay, header) {
-    return this.request(url, data, showLoading, isDelay, header = {}, 'POST')
+  post(params){
+      return this.request(params, 'POST')
   },
-  put(url, data, showLoading, isDelay, header) {
-    return this.request(url, data, showLoading, isDelay, header = {}, 'PUT')
+  put(params) {
+      return this.request(params, 'PUT')
   },
-  delete(url, data, showLoading, isDelay, header) {
-    return this.request(url, data, showLoading, isDelay, header = {}, 'DELETE')
+  delete(params) {
+      return this.request(params, 'DELETE')
   },
   /**
    * 请求方法
    */
-  request(url, data = {}, showLoading=true, isDelay = false, header={}, method) {
+  request(params, method) {
+    const {url, data = {}, showLoading=true, isDelay = false, header={}} = params
     if(showLoading) {
-      showLoading();
+        showLoading();
     }
     let headers = {
-      "Content-Type": "application/json;charset=utf8"
+        "Content-Type": "application/json;charset=utf8"
     }
     headers = Object.assign(header, header, {
-      "token": "token" // 这里获取本地的或者vuex的
+        "token": "token" // 这里获取本地的或者vuex的
     })
     
     return new Promise((resolve, reject) => {
