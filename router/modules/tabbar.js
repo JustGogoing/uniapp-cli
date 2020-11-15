@@ -1,4 +1,4 @@
-const whitelist = {     //声明了一个白名单
+const whitelist = {     //声明了一个tab的白名单
 	'/pages/home/index': 'home',
 	'/pages/mine/index': 'mine',
 }
@@ -22,10 +22,8 @@ const tabbar = [
 		path: '*',
 		name: 'middle',
 		redirect:to=>{
-			if(name){
-				return {name}
-			};
-			return {name:'404'}
+            const name = whitelist[to.path];
+            return name ? name : {name:'404'}
 		}
 	}
 ];
