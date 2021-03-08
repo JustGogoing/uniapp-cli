@@ -9,12 +9,12 @@
 		onHide: function() {
 			console.log('App Hide')
 		},
-    onError:function(err){
-      console.log(err);
-    },
-    globalData:{
-      API: process.env.NODE_ENV === "development" ? "http://192.168.0.1:8080" : "http://192.168.0.1:8080"
-    }
+		onError:function(err){
+			console.log(err);
+		},
+		globalData:{
+			API: process.env.NODE_ENV === "development" ? "http://192.168.0.1:8080" : "http://192.168.0.1:8080"
+		}
 	}
 </script>
 

@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/JustGogoing/uniapp-cli#readme",
   "dependencies": {
-    "uni-simple-router": "^1.5.5"
+    "uni-simple-router": "^2.0.0-beta.8"
   }
 }
